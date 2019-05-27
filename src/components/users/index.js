@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
+import UsersService from "../../services/usersService";
 
 function Users (props) {
     const [usersData, setUsersData] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3002/users")
-            .then(res => res.json()).then(res => setUsersData(res));
+        UsersService.getUserList("/users", data => {setUsersData(data)});
     }, []);
 
     return (usersData ? <div>
