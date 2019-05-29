@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import UsersService from "../../services/usersService";
 
-function Users (props) {
+function Users () {
     const [usersData, setUsersData] = useState(null);
 
     useEffect(() => {

@@ -12,7 +12,7 @@ router.get("/users", (req, res) => {
 
 router.put("/users", (req, res) => {
     console.log(req.body, '+++++++++++');
-    res.send();
+    res.send("success");
 });
 
 module.exports = router;
