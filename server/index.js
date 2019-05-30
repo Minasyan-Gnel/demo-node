@@ -1,15 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const mongoose = require("mongoose");
 const serverConst = require("./constants/server");
 const usersRequests = require("./requests/usersRequests");
-
-mongoose.connect("mongodb://localhost/nodeApp", { useNewUrlParser: true });
-const db = mongoose.connection;
-
+const mongoDB = require("./mongoDB");
 const app = express();
 
+mongoDB();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors({

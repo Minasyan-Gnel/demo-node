@@ -1,18 +1,19 @@
 const {Router} = require('express');
+const Users = require("../modules/users");
 const router = new Router();
 
 router.get("/users", (req, res) => {
-    const userslist = [
-        {id: 1, firstName: "Asdfgh", lastName: "skadmsdml", age: 20},
-        {id: 2, firstName: "Kfdgfgd", lastName: "ghngh", age: 20},
-        {id: 3, firstName: "Gdsvsdw", lastName: "dffad", age: 20},
-    ];
-    res.json(userslist);
+    Users.find({}, (err, users) => {
+        res.json(users);
+    });
 });
 
 router.put("/users", (req, res) => {
-    console.log(req.body, '+++++++++++');
-    res.send("success");
+    const users = new Users(req.body);
+    users.save(err => err
+        ? res.status(400).end(err.message)
+        : res.send("success")
+    );
 });
 
 module.exports = router;

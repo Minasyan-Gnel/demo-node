@@ -12,7 +12,7 @@ function Users () {
         {
             usersData.length ? <ul>
                 {
-                    usersData.map(user => <li key={user.id}>
+                    usersData.map(user => <li key={user.id} className="one-user">
                         <h2>{user.firstName + user.lastName}</h2>
                         <h4>{`Age: ${user.age}`}</h4>
                     </li>)
