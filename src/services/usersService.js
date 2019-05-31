@@ -16,7 +16,7 @@ class UsersService {
 
     addUser = (params, data, callBack = () => {}) => {
         fetch(mainConfigs.url + params, {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {'Content-Type': 'application/json'}
         }).then(callBack)
