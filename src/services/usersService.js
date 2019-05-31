@@ -20,6 +20,10 @@ class UsersService {
             body: JSON.stringify(data),
             headers: {'Content-Type': 'application/json'}
         }).then(callBack)
+    };
+
+    getUserById = id => {
+        console.log(id);
     }
 }
 
