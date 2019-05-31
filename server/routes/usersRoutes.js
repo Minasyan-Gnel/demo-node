@@ -3,7 +3,7 @@ const Users = require("../models/users");
 const router = new Router();
 
 router.get("/users", (req, res) => {
-    Users.find({}, (err, users) => {
+    Users.find({}, {"_id": 0, "__v": 0}, (err, users) => {
         res.json(users);
     });
 });
