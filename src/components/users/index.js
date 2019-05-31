@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
 import UsersService from "../../services/usersService";
 
-function Users () {
+function Users (props) {
+    const {handelUserEdit} = props;
     const [usersData, setUsersData] = useState(null);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function Users () {
                     usersData.map(user => <li key={user.id} className="one-user">
                         <h2>{user.firstName + user.lastName}</h2>
                         <h4>{`Age: ${user.age}`}</h4>
-                        <Link to="/edit">Edit</Link>
+                        <button type="button" onClick={handelUserEdit(user.id)}>Edit</button>
                         <button type="button">Delete</button>
                     </li>)
                 }

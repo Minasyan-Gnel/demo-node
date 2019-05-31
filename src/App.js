@@ -1,19 +1,20 @@
-import React from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import React, {useState, useCallback} from 'react';
 import Users from "./components/users";
 import UserEdit from "./components/userEdit";
 import CreateUsersForm from "./components/createUsersForm";
 
 function App() {
-  return (
-    <div>
-        <Router>
+    const [editUserId, setEditUserId] = useState(null);
+
+    const handelUserEdit = useCallback(id => () => setEditUserId(id), []);
+
+    return (
+        <div>
             <CreateUsersForm/>
-            <Users/>
-            <Route path="/edit" component={UserEdit}/>
-        </Router>
-    </div>
-  );
+            <Users handelUserEdit={handelUserEdit}/>
+            {editUserId ? <UserEdit userId={editUserId} handelUserEdit={handelUserEdit}/> : null}
+        </div>
+      );
 }
 
 export default App;

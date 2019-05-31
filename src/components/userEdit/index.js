@@ -1,6 +1,7 @@
 import React from "react";
 
-function UserEdit () {
+function UserEdit (props) {
+    const {handelUserEdit} = props;
     return (<div>
         <form>
             <label>First name</label>
@@ -10,6 +11,7 @@ function UserEdit () {
             <label>Age</label>
             <input type="number"/>
             <button type="submit" value="Submit">Edit</button>
+            <button onClick={handelUserEdit(null)}>Close</button>
         </form>
     </div>)
 }
