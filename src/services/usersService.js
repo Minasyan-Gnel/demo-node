@@ -1,29 +1,25 @@
-import mainConfigs from "../configs";
+import DataFetcher from "../helpers/dataFetcher";
 
 class UsersService {
-    constructor () {
-        this.data = {};
-    }
 
-    getUserList = (params, callBack) => {
-        fetch(mainConfigs.url + params)
-            .then(res => res.json())
-            .then(res => {
-                this.data.usersList = res;
-                callBack && callBack(res);
-            })
+    getUsersList = async query => {
+        const data = await DataFetcher.getData(query);
+        return Promise.resolve(data);
     };
 
-    addUser = (params, data, callBack = () => {}) => {
-        fetch(mainConfigs.url + params, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {'Content-Type': 'application/json'}
-        }).then(callBack)
+    getUserById = async (query, params) => {
+        const data = await DataFetcher.getData(query, params);
+        return Promise.resolve(data);
     };
 
-    getUserById = id => {
-        console.log(id);
+    addUser = async (query, params) => {
+        const data = await DataFetcher.postData(query, params);
+        return Promise.resolve(data);
+    };
+
+    updateUser = async (query, params) => {
+        const data = await DataFetcher.postData(query, params);
+        return Promise.resolve(data);
     }
 }
 

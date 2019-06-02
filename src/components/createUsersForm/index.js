@@ -7,12 +7,14 @@ function CreateUsersForm () {
 
     const createUser = e => {
         e.preventDefault();
-        UsersService.addUser("/users", userData, () => {
-            setSuccessMessage("Success");
-            setTimeout(() => {
-                setSuccessMessage("")
-            }, 1000);
-        })
+        UsersService
+            .addUser("/users", userData)
+            .then(() => {
+                setSuccessMessage("Success");
+                setTimeout(() => {
+                    setSuccessMessage("")
+                }, 1000);
+            });
     };
 
     const changeHandler = type => e => {

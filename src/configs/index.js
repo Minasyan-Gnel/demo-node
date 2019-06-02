@@ -1,5 +1,7 @@
-const mainConfigs = {
-    url: "http://localhost:3002",
+const Configs = {
+    main: {
+        url: "http://localhost:3002"
+    }
 };
 
-export default mainConfigs;
+export default Configs;

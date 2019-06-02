@@ -6,7 +6,7 @@ function Users (props) {
     const [usersData, setUsersData] = useState(null);
 
     useEffect(() => {
-        UsersService.getUserList("/users", data => {setUsersData(data)});
+        UsersService.getUsersList("/users").then(setUsersData);
     }, []);
 
     return (usersData ? <div>
@@ -14,7 +14,7 @@ function Users (props) {
             usersData.length ? <ul>
                 {
                     usersData.map(user => <li key={user.id} className="one-user">
-                        <h2>{user.firstName + user.lastName}</h2>
+                        <h2>{user.firstName + " " + user.lastName}</h2>
                         <h4>{`Age: ${user.age}`}</h4>
                         <button type="button" onClick={handelUserEdit(user.id)}>Edit</button>
                         <button type="button">Delete</button>
