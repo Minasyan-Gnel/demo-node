@@ -28,8 +28,11 @@ router.post("/users", (req, res) => {
 });
 
 router.post("/edit", (req, res) => {
-    console.log(req.body, "----> Data for update <----");
-    res.json("ok");
+    Users.find({id: req.body.id}, (err, user) => {
+        Users.update({id: req.body.id}, {...user, ...req.body}, (err) => {
+            err ? res.status(400).end(err.message) : res.json("user is updated");
+        })
+    });
 });
 
 module.exports = router;
